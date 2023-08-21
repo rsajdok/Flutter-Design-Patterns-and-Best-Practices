@@ -39,16 +39,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       await emit.onEach(
         _cartModel.cartInfoStream,
         onData: (CartInfo cartInfo) {
-          // 2. Only set the items when the cart info changes
-          // 3. What should happen: the UI on the cart page will be rebuilt
-          // because CartModel emits a new CartInfo object (given line 47 is commented out)
-          // 4. Now this will throw, because CartModel emits an unmodifiable map
-          cartInfo.items.addAll({});
           emit(
             state.copyWith(
               items: cartInfo.items,
-              //totalPrice: cartInfo.totalPrice,
-              //totalItems: cartInfo.totalItems,
+              totalPrice: cartInfo.totalPrice,
+              totalItems: cartInfo.totalItems,
             ),
           );
         },
@@ -65,10 +60,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   Future<void> _onAddItem(AddItem event, Emitter emit) async {
     try {
-      // 1. Don't change state when an item is added to the cart
-      //emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+      emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
       await _cartModel.addToCart(event.item);
-      //emit(state.copyWith(loadingResult: const DelayedResult.none()));
+      emit(state.copyWith(loadingResult: const DelayedResult.none()));
     } on Exception catch (ex) {
       emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
     }
