@@ -40,11 +40,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       await emit.onEach(
         _cartModel.cartInfoStream,
         onData: (CartInfo cartInfo) {
+          // 2. Only set the items when the cart info changes
+          // 3. What should happen: the UI on the cart page won't be rebuilt,
+          // because the `cartInfo.item` is the same underlying collection as before,
+          // and based on ==, the state is the same as before.
+          // 4. Also, this won't throw and will allow to modify the underlying collection,
+          // which can lead to obscure and hard to trace bugs.
+          cartInfo.items.addAll({});
           emit(
             state.copyWith(
               items: cartInfo.items,
-              totalPrice: cartInfo.totalPrice,
-              totalItems: cartInfo.totalItems,
+              //totalPrice: cartInfo.totalPrice,
+              //totalItems: cartInfo.totalItems,
             ),
           );
         },
@@ -61,9 +68,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   Future<void> _onAddItem(AddItem event, Emitter emit) async {
     try {
-      emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+      // 1. Don't change state when an item is added to the cart
+      //emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
       await _cartModel.addToCart(event.item);
-      emit(state.copyWith(loadingResult: const DelayedResult.none()));
+      //emit(state.copyWith(loadingResult: const DelayedResult.none()));
     } on Exception catch (ex) {
       emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
     }
