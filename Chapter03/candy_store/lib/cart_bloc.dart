@@ -28,7 +28,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
       final cartInfo = await _cartModel.cartInfoFuture;
-      // TODO: Should actually copy the Map and not just the reference
       emit(
         state.copyWith(
           items: cartInfo.items,
@@ -41,11 +40,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         _cartModel.cartInfoStream,
         onData: (CartInfo cartInfo) {
           // 2. Only set the items when the cart info changes
-          // 3. What should happen: the UI on the cart page won't be rebuilt,
-          // because the `cartInfo.item` is the same underlying collection as before,
-          // and based on ==, the state is the same as before.
-          // 4. Also, this won't throw and will allow to modify the underlying collection,
-          // which can lead to obscure and hard to trace bugs.
+          // 3. What should happen: the UI on the cart page will be rebuilt
+          // because CartModel emits a new CartInfo object (given line 47 is commented out)
+          // 4. Now this will throw, because CartModel emits an unmodifiable map
           cartInfo.items.addAll({});
           emit(
             state.copyWith(
