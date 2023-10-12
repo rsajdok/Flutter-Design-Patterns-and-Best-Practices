@@ -1,6 +1,6 @@
 import 'package:candy_store/cart_view_model.dart';
 import 'package:candy_store/cart_view_model_provider.dart';
-import 'package:candy_store/faves/data/in_memory_faves_repository.dart';
+import 'package:candy_store/faves/data/local_faves_repository.dart';
 import 'package:candy_store/faves/domain/faves_repository.dart';
 import 'package:candy_store/main_page.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +13,7 @@ void main() {
     MultiRepositoryProvider(
       providers: [
         RepositoryProvider<FavesRepository>(
-          create: (_) => InMemoryFavesRepository(),
+          create: (_) => LocalFavesRepository(),
         ),
       ],
       child: CartViewModelProvider(
