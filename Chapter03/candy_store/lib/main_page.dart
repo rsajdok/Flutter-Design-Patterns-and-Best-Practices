@@ -26,7 +26,7 @@ class _MainPageState extends State<MainPage> {
               right: 16,
               bottom: 16,
               child: GestureDetector(
-                onTap: openCart,
+                onTap: _openCart,
                 child: CartButton(
                   count: cartViewModel.state.totalItems,
                 ),
@@ -38,7 +38,7 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void openCart() {
+  void _openCart() {
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) => CartPage.withBloc(),

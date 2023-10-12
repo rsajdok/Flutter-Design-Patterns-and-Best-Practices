@@ -1,3 +1,4 @@
+import 'package:candy_store/faves/presentation/view/faves_page.dart';
 import 'package:candy_store/product_list_item.dart';
 import 'package:candy_store/product_list_item_view.dart';
 import 'package:flutter/material.dart';
@@ -207,6 +208,12 @@ class _ProductsPageState extends State<ProductsPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Products'),
+        actions: [
+          IconButton(
+            onPressed: _openFavourites,
+            icon: const Icon(Icons.favorite),
+          ),
+        ],
       ),
       body: ListView.builder(
         padding: const EdgeInsets.symmetric(vertical: 16),
@@ -215,6 +222,14 @@ class _ProductsPageState extends State<ProductsPage> {
           final item = items[index];
           return ProductListItemView(item: item);
         },
+      ),
+    );
+  }
+
+  void _openFavourites() {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => FavesPage.withBloc(),
       ),
     );
   }

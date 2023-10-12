@@ -19,9 +19,7 @@ class ProductListItemView extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => ProductDetailsPage(
-              product: item,
-            ),
+            builder: (_) => ProductDetailsPage.withBloc(item)
           ),
         );
       },
