@@ -7,13 +7,13 @@ import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
 
 class MainActivity : FlutterActivity() {
-    private val FAVES_METHOD_CHANNEL = "com.example.candy_store/faves"
-    private lateinit var methodChannel: MethodChannel
-
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
-        methodChannel = MethodChannel(flutterEngine.dartExecutor.binaryMessenger, FAVES_METHOD_CHANNEL)
-        methodChannel.setMethodCallHandler { call, result ->
+        val favesMethodChannel = MethodChannel(
+            flutterEngine.dartExecutor.binaryMessenger,
+            "com.example.candy_store/faves"
+        )
+`        favesMethodChannel.setMethodCallHandler { call, result ->
             when (call.method) {
                 "getFaves" -> {
                     val faves = getFaves()
