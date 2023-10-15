@@ -13,7 +13,7 @@ class MainActivity : FlutterActivity() {
             flutterEngine.dartExecutor.binaryMessenger,
             "com.example.candy_store/faves"
         )
-`        favesMethodChannel.setMethodCallHandler { call, result ->
+        favesMethodChannel.setMethodCallHandler { call, result ->
             when (call.method) {
                 "getFaves" -> {
                     val faves = getFaves()
