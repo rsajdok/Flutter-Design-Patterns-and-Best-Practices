@@ -1,10 +1,14 @@
 import 'package:candy_store/cart_view_model.dart';
 import 'package:candy_store/cart_view_model_provider.dart';
 import 'package:candy_store/main_page.dart';
+import 'package:candy_store/product_repository/product_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'product_repository/api_service.dart';
 import 'product_repository/hive_service.dart';
+import 'product_repository/product_api_data_source.dart';
+import 'product_repository/product_hive_data_source.dart';
 
 final hiveService = HiveService();
 final apiService = ApiService();
@@ -12,14 +16,26 @@ final apiService = ApiService();
 Future<void> main() async {
   await hiveService.initializeHive();
   runApp(
-    CartViewModelProvider(
-      cartViewModel: CartViewModel(),
-      child: MaterialApp(
-        title: 'Candy shop',
-        theme: ThemeData(
-          primarySwatch: Colors.lime,
+    MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<IProductRepository>(
+          create: (_) => ProductRepository(
+            remoteDataSource: ProductApiDataSource(apiService),
+            localDataSource: ProductHiveDataSource(
+              hiveService.getProductBox(),
+            ),
+          ),
+        )
+      ],
+      child: CartViewModelProvider(
+        cartViewModel: CartViewModel(),
+        child: MaterialApp(
+          title: 'Candy shop',
+          theme: ThemeData(
+            primarySwatch: Colors.lime,
+          ),
+          home: const MainPage(),
         ),
-        home: const MainPage(),
       ),
     ),
   );

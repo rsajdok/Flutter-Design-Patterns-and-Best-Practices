@@ -3,18 +3,12 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'delayed_result.dart';
-import 'main.dart';
-
-import 'product_repository/product_api_data_source.dart';
-import 'product_repository/product_hive_data_source.dart';
 import 'product_repository/product_repository.dart';
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
-  late final _productRepository = ProductRepository(
-      remoteDataSource: ProductApiDataSource(apiService),
-      localDataSource: ProductHiveDataSource(hiveService.getProductBox()));
+  final IProductRepository _productRepository;
 
-  ProductsBloc() : super(const ProductsState()) {
+  ProductsBloc(this._productRepository) : super(const ProductsState()) {
     on<ProductsFetched>(_onProductsFetched);
   }
 
