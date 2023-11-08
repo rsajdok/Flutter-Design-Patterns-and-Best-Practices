@@ -80,4 +80,6 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   void _onClearError(ClearError event, Emitter emit) {
     emit(state.copyWith(loadingResult: const DelayedResult.none()));
   }
+
+  // TODO: return `dispose` in the `close` method?
 }

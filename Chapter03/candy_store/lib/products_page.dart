@@ -3,6 +3,7 @@ import 'package:candy_store/cart_event.dart';
 import 'package:candy_store/product_list_item_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 import 'products_bloc.dart';
 
@@ -12,7 +13,7 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductsBloc(context.read())
+      create: (context) => ProductsBloc(GetIt.I.get())
         ..add(
           const ProductsFetched(),
         ),

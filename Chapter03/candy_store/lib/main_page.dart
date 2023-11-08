@@ -5,6 +5,7 @@ import 'package:candy_store/cart_page.dart';
 import 'package:candy_store/products_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 // TODO: Cherry pick this `super.key` commit into CH3 & CH4 branches
 class MainPage extends StatefulWidget {
@@ -15,7 +16,9 @@ class MainPage extends StatefulWidget {
 
   static Widget withBloc() {
     return BlocProvider<CartBloc>(
-      create: (context) => CartBloc(context.read())..add(const Load()),
+      create: (context) => CartBloc(
+        GetIt.I.get(),
+      )..add(const Load()),
       child: const MainPage(),
     );
   }
