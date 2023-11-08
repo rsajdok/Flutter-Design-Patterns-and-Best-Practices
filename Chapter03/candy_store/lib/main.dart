@@ -1,5 +1,3 @@
-import 'package:candy_store/cart_view_model.dart';
-import 'package:candy_store/cart_view_model_provider.dart';
 import 'package:candy_store/main_page.dart';
 import 'package:candy_store/product_repository/product_repository.dart';
 import 'package:flutter/material.dart';
@@ -27,15 +25,12 @@ Future<void> main() async {
           ),
         )
       ],
-      child: CartViewModelProvider(
-        cartViewModel: CartViewModel(),
-        child: MaterialApp(
-          title: 'Candy shop',
-          theme: ThemeData(
-            primarySwatch: Colors.lime,
-          ),
-          home: const MainPage(),
+      child: MaterialApp(
+        title: 'Candy shop',
+        theme: ThemeData(
+          primarySwatch: Colors.lime,
         ),
+        home: MainPage.withBloc(),
       ),
     ),
   );
