@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 
   static Widget withBloc() {
     return BlocProvider<CartBloc>(
-      create: (context) => CartBloc()..add(const Load()),
+      create: (context) => CartBloc(context.read())..add(const Load()),
       child: const MainPage(),
     );
   }

@@ -1,3 +1,5 @@
+import 'package:candy_store/cart_repository.dart';
+import 'package:candy_store/in_memory_cart_repository.dart';
 import 'package:candy_store/main_page.dart';
 import 'package:candy_store/product_repository/product_repository.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,10 @@ Future<void> main() async {
               hiveService.getProductBox(),
             ),
           ),
-        )
+        ),
+        RepositoryProvider<ICartRepository>(
+          create: (_) => InMemoryCartRepository(),
+        ),
       ],
       child: MaterialApp(
         title: 'Candy shop',

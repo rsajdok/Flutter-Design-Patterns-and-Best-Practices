@@ -2,15 +2,10 @@ import 'dart:async';
 
 import 'package:candy_store/cart_info.dart';
 import 'package:candy_store/cart_list_item.dart';
+import 'package:candy_store/cart_repository.dart';
 import 'package:candy_store/product_list_item.dart';
 
-class CartModel {
-  CartModel._internal();
-
-  static final CartModel _instance = CartModel._internal();
-
-  factory CartModel() => _instance;
-
+class InMemoryCartRepository extends ICartRepository {
   final CartInfo _cartInfo = CartInfo(
     items: {},
     totalPrice: 0,
@@ -20,12 +15,15 @@ class CartModel {
   final StreamController<CartInfo> _cartInfoController =
       StreamController<CartInfo>.broadcast();
 
+  @override
   Stream<CartInfo> get cartInfoStream => _cartInfoController.stream;
 
+  @override
   Future<CartInfo> get cartInfoFuture async => _cartInfo.copyWith(
         items: Map.unmodifiable(_cartInfo.items),
       );
 
+  @override
   Future<void> addToCart(ProductListItem item) async {
     await Future.delayed(const Duration(seconds: 3));
     CartListItem? existingItem = _cartInfo.items[item.id];
@@ -52,6 +50,7 @@ class CartModel {
     _cartInfoController.add(cartInfo);
   }
 
+  @override
   Future<void> removeFromCart(CartListItem item) async {
     await Future.delayed(const Duration(seconds: 3));
     // throw Exception('Could not remove item from cart');
