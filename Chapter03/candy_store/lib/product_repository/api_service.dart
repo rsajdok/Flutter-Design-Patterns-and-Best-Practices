@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'package:flutter/cupertino.dart';
+
 import 'product.dart';
 import 'package:http/http.dart' as http;
 
@@ -6,14 +8,19 @@ class ApiService {
   final String _baseUrl = 'https://api.example.com/candystore';
 
   Future<List<Product>> fetchProducts() async {
-    final response = await http.get(Uri.parse('$_baseUrl/products'));
+    try {
+      final response = await http.get(Uri.parse('$_baseUrl/products'));
 
-    if (response.statusCode == 200) {
-      final productData = json.decode(response.body);
-      return productData.map((json) => Product.fromJson(json)).toList();
-    } else {
+      if (response.statusCode == 200) {
+        final productData = json.decode(response.body);
+        return productData.map((json) => Product.fromJson(json)).toList();
+      } else {
+        return fakeApiResponse;
+        //throw Exception('Failed to load candies');
+      }
+    } on Exception catch (ex, st) {
+      debugPrint('Failed to load candies: $ex, stacktrace: $st');
       return fakeApiResponse;
-      //throw Exception('Failed to load candies');
     }
   }
 }
