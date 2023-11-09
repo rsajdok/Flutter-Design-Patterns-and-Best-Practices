@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 
 class CartViewModel extends ChangeNotifier {
   // TODO: Inject this in the DI chapter
-  final CartModel _cartModel = CartModel();
+  final CartModel _cartModel = CartModel.instance;
 
   CartViewModel() {
     _cartModel.cartInfoStream.listen((cartInfo) {

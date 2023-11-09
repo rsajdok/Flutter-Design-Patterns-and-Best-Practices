@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  final CartModel _cartModel = CartModel();
+  final CartModel _cartModel = CartModel.instance;
 
   CartBloc()
       : super(

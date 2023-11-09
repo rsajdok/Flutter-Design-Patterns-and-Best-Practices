@@ -9,7 +9,7 @@ class CartModel {
 
   static final CartModel _instance = CartModel._internal();
 
-  factory CartModel() => _instance;
+  static CartModel get instance => _instance;
 
   final CartInfo _cartInfo = CartInfo(
     items: {},
