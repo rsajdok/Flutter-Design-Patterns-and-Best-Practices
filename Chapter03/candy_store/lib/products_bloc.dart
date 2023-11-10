@@ -8,7 +8,10 @@ import 'product_repository/product_repository.dart';
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final IProductRepository _productRepository;
 
-  ProductsBloc(this._productRepository) : super(const ProductsState()) {
+  ProductsBloc({
+    required IProductRepository productRepository,
+  })  : _productRepository = productRepository,
+        super(const ProductsState()) {
     on<ProductsFetched>(_onProductsFetched);
   }
 

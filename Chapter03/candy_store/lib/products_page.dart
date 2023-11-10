@@ -12,10 +12,9 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ProductsBloc(context.read())
-        ..add(
-          const ProductsFetched(),
-        ),
+      create: (context) => ProductsBloc(
+        productRepository: context.read(),
+      )..add(const ProductsFetched()),
       child: _ProductsView(),
     );
   }

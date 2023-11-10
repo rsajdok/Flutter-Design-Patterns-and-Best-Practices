@@ -9,8 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   final ICartRepository _cartRepository;
 
-  CartBloc(this._cartRepository)
-      : super(
+  CartBloc({
+    required ICartRepository cartRepository,
+  })  : _cartRepository = cartRepository,
+        super(
           const CartState(
             items: {},
             totalPrice: 0,
