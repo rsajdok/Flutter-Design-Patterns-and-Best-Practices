@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:candy_store/cart_info.dart';
-import 'package:candy_store/cart_list_item.dart';
-import 'package:candy_store/cart_repository.dart';
-import 'package:candy_store/product_list_item.dart';
+import 'package:candy_store/cart/domain/model/cart_info.dart';
+import 'package:candy_store/cart/domain/model/cart_list_item.dart';
+import 'package:candy_store/cart/domain/repository/cart_repository.dart';
+import 'package:candy_store/product/domain/model/product_list_item.dart';
 
 class InMemoryCartRepository extends ICartRepository {
   final CartInfo _cartInfo = CartInfo(

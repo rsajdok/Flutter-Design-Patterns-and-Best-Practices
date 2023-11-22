@@ -1,6 +1,6 @@
-import 'product.dart';
-import 'product_api_data_source.dart';
-import 'product_hive_data_source.dart';
+import '../model/product.dart';
+import '../../data/repository/product_api_data_source.dart';
+import '../../data/repository/product_hive_data_source.dart';
 
 abstract class IProductRepository {
   Future<List<Product>> getProducts();

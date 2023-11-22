@@ -1,8 +1,8 @@
-import 'package:candy_store/cart_event.dart';
-import 'package:candy_store/cart_info.dart';
-import 'package:candy_store/cart_repository.dart';
-import 'package:candy_store/cart_state.dart';
-import 'package:candy_store/delayed_result.dart';
+import 'package:candy_store/cart/presentation/bloc/cart_event.dart';
+import 'package:candy_store/cart/domain/model/cart_info.dart';
+import 'package:candy_store/cart/domain/repository/cart_repository.dart';
+import 'package:candy_store/cart/presentation/bloc/cart_state.dart';
+import 'package:candy_store/common/model/delayed_result.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

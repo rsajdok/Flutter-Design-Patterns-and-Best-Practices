@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 
-import 'product.dart';
+import '../../domain/model/product.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {

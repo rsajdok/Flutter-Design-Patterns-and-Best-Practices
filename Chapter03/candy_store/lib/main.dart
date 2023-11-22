@@ -1,14 +1,9 @@
-import 'package:candy_store/cart_repository.dart';
-import 'package:candy_store/in_memory_cart_repository.dart';
-import 'package:candy_store/main_page.dart';
-import 'package:candy_store/product_repository/product_repository.dart';
+import 'package:candy_store/cart/data/repository/in_memory_cart_repository.dart';
+import 'package:candy_store/cart/domain/repository/cart_repository.dart';
+import 'package:candy_store/common/view/main_page.dart';
+import 'package:candy_store/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-
-import 'product_repository/api_service.dart';
-import 'product_repository/hive_service.dart';
-import 'product_repository/product_api_data_source.dart';
-import 'product_repository/product_hive_data_source.dart';
 
 // At this point, all of the code is in the `lib` folder and we will sort it in Part 3
 Future<void> main() async {
