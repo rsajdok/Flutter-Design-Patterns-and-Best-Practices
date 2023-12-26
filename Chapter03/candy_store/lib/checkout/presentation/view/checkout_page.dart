@@ -34,15 +34,17 @@ class _CheckoutPageState extends State<CheckoutPage> {
       return Scaffold(
         body: Center(
           child: TextButton(
-            onPressed: () {
-              final paymentMethod =
-                  state.paymentMethods.firstOrNull ?? 'Unknown';
-              _cubit.checkout(paymentMethod);
-            },
+            onPressed: _checkout,
             child: const Text('Checkout'),
           ),
         ),
       );
     });
+  }
+
+  void _checkout() {
+    final paymentMethod = _cubit.state.paymentMethods.firstOrNull ?? 'Unknown';
+    _cubit.checkout(paymentMethod);
+    Navigator.pop(context);
   }
 }
