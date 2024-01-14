@@ -2,12 +2,12 @@ import 'package:candy_store/product/domain/model/product.dart';
 import 'package:candy_store/product/domain/repository/product_repository.dart';
 import 'package:hive/hive.dart';
 
-class ProductHiveDataSource extends IProductRepository {
+class ProductHiveDataSource /*extends IProductRepository */{
   ProductHiveDataSource(this._productBox);
 
   final Box<Product> _productBox;
 
-  @override
+  //@override
   Future<List<Product>> getProducts() async {
     return _productBox.values.toList();
   }

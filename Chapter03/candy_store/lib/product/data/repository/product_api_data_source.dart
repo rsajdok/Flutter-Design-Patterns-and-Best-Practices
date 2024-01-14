@@ -2,12 +2,12 @@ import '../service/api_service.dart';
 import '../../domain/model/product.dart';
 import '../../domain/repository/product_repository.dart';
 
-class ProductApiDataSource extends IProductRepository {
+class ProductApiDataSource /*extends IProductRepository*/ {
   ProductApiDataSource(this._apiService);
 
   final ApiService _apiService;
 
-  @override
+  //@override
   Future<List<Product>> getProducts() async {
     return _apiService.fetchProducts();
   }

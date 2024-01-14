@@ -9,6 +9,7 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
 
   ProductsBloc(this._productRepository) : super(const ProductsState()) {
     on<ProductsFetched>(_onProductsFetched);
+    on<ProductsSearched>(_onProductsSearched);
   }
 
   Future<void> _onProductsFetched(
@@ -18,6 +19,34 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
     try {
       emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
       final products = await _productRepository.getProducts();
+      emit(
+        state.copyWith(
+          items: products
+              .map(
+                (p) => ProductListItem(
+                  id: p.id,
+                  name: p.name,
+                  description: p.description,
+                  price: p.price,
+                  imageUrl: p.imageUrl,
+                ),
+              )
+              .toList(),
+        ),
+      );
+      emit(state.copyWith(loadingResult: const DelayedResult.none()));
+    } on Exception catch (ex) {
+      emit(state.copyWith(loadingResult: DelayedResult.fromError(ex)));
+    }
+  }
+
+  Future<void> _onProductsSearched(
+    ProductsSearched event,
+    Emitter<ProductsState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(loadingResult: const DelayedResult.inProgress()));
+      final products = await _productRepository.searchProducts(event.query);
       emit(
         state.copyWith(
           items: products
@@ -72,4 +101,13 @@ sealed class ProductsEvent extends Equatable {
 
 final class ProductsFetched extends ProductsEvent {
   const ProductsFetched();
+}
+
+final class ProductsSearched extends ProductsEvent {
+  const ProductsSearched(this.query);
+
+  final String query;
+
+  @override
+  List<Object?> get props => [query];
 }
