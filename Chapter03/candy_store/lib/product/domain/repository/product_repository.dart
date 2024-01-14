@@ -54,8 +54,6 @@ class ProductRepository extends IProductRepository {
         product.description.toLowerCase(),
         query.toLowerCase(),
       );
-      print(
-          'query: $query, product: ${product.name}, nameDistance: $nameDistance, descriptionDistance: $descriptionDistance');
       return nameDistance <= 3 || descriptionDistance <= 3;
     }).toList();
     return results;
