@@ -1,6 +1,7 @@
 import 'dart:isolate';
 
 import 'package:candy_store/product/domain/repository/fake_search_data.dart';
+import 'package:flutter/foundation.dart';
 
 import '../model/product.dart';
 import '../../data/repository/product_api_data_source.dart';
@@ -44,7 +45,7 @@ class ProductRepository extends IProductRepository {
     if (query.isEmpty) {
       return allProducts;
     }
-    final results = await Isolate.run(() => _search(query));
+    final results = await compute(_search, query);
     return results;
   }
 
