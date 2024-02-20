@@ -8,11 +8,11 @@ class CartPage extends StatefulWidget {
   final Function(CartListItem) onAddToCart;
 
   const CartPage({
-    Key? key,
+    super.key,
     required this.items,
     required this.onRemoveFromCart,
     required this.onAddToCart,
-  }) : super(key: key);
+  });
 
   @override
   State<CartPage> createState() => _CartPageState();
@@ -94,8 +94,9 @@ class _CartPageState extends State<CartPage> {
 
   void _removeFromCart(CartListItem item) {
     setState(() {
-      final index =
-          _items.indexWhere((item) => item.product.id == item.product.id);
+      final index = _items.indexWhere(
+        (i) => i.product.id == item.product.id,
+      );
       if (index != -1) {
         final existingItem = _items[index];
         final newQuantity = existingItem.quantity - 1;
@@ -115,8 +116,9 @@ class _CartPageState extends State<CartPage> {
 
   void _addToCart(CartListItem item) {
     setState(() {
-      final index =
-          _items.indexWhere((item) => item.product.id == item.product.id);
+      final index = _items.indexWhere(
+        (i) => i.product.id == item.product.id,
+      );
       if (index != -1) {
         final existingItem = _items[index];
         _items[index] = CartListItem(

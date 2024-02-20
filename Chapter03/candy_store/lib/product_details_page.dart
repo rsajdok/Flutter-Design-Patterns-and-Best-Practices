@@ -6,10 +6,10 @@ class ProductDetailsPage extends StatelessWidget {
   final Function(ProductListItem) onAddToCart;
 
   const ProductDetailsPage({
-    Key? key,
+    super.key,
     required this.product,
     required this.onAddToCart,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +33,7 @@ class ProductDetailsPage extends StatelessWidget {
                         bottomLeft: Radius.circular(30),
                         bottomRight: Radius.circular(30),
                       ),
-                      child: Image.network(
-                        product.imageUrl,
-                        fit: BoxFit.cover,
-                        height: MediaQuery.of(context).size.width * 0.7,
-                      ),
+                      child: Image.asset(product.imageUrl),
                     ),
                   ),
                 ),

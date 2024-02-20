@@ -16,8 +16,12 @@ class CartListItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = item.product;
+    final iconColor = Theme.of(context).colorScheme.secondary;
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 16,
+      ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,10 +30,7 @@ class CartListItemView extends StatelessWidget {
             child: SizedBox(
               width: 80,
               height: 80,
-              child: Image.network(
-                product.imageUrl,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(product.imageUrl),
             ),
           ),
           Expanded(
@@ -61,7 +62,7 @@ class CartListItemView extends StatelessWidget {
                           onPressed: () => onRemoveFromCart(item),
                           icon: Icon(
                             Icons.remove,
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: iconColor,
                           ),
                         ),
                         Text(
@@ -75,7 +76,7 @@ class CartListItemView extends StatelessWidget {
                           onPressed: () => onAddToCart(item),
                           icon: Icon(
                             Icons.add,
-                            color: Theme.of(context).colorScheme.secondary,
+                            color: iconColor,
                           ),
                         ),
                       ],

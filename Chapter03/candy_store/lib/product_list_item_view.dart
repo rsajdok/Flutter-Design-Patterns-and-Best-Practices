@@ -7,10 +7,10 @@ class ProductListItemView extends StatelessWidget {
   final Function(ProductListItem) onAddToCart;
 
   const ProductListItemView({
-    Key? key,
+    super.key,
     required this.item,
     required this.onAddToCart,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +34,7 @@ class ProductListItemView extends StatelessWidget {
               child: SizedBox(
                 width: 72,
                 height: 72,
-                child: Image.network(
-                  item.imageUrl,
-                  fit: BoxFit.cover,
-                ),
+                child: Image.asset(item.imageUrl),
               ),
             ),
             Expanded(

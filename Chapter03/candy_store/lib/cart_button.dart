@@ -4,21 +4,22 @@ class CartButton extends StatelessWidget {
   final int count;
 
   const CartButton({
-    Key? key,
+    super.key,
     required this.count,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
+    const borderRadius = BorderRadius.all(
+      Radius.circular(10),
+    );
     return Container(
       width: 56,
       height: 56,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.teal[200],
-        borderRadius: const BorderRadius.all(
-          Radius.circular(10),
-        ),
+        borderRadius: borderRadius,
       ),
       child: Stack(
         children: [
@@ -35,7 +36,7 @@ class CartButton extends StatelessWidget {
               padding: const EdgeInsets.all(2),
               decoration: BoxDecoration(
                 color: Colors.pink[500],
-                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                borderRadius: borderRadius,
               ),
               constraints: const BoxConstraints(
                 minWidth: 16,

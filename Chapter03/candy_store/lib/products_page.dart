@@ -6,24 +6,22 @@ class ProductsPage extends StatefulWidget {
   final Function(ProductListItem) onAddToCart;
 
   const ProductsPage({
-    Key? key,
+    super.key,
     required this.onAddToCart,
-  }) : super(key: key);
+  });
 
   @override
   State<ProductsPage> createState() => _ProductsPageState();
 }
 
 class _ProductsPageState extends State<ProductsPage> {
-  // TODO: Update `imageUrl` to local assets
   final List<ProductListItem> items = [
     ProductListItem(
       id: '1',
       name: 'Cupcake',
       description: 'A delicious cupcake with a variety of flavors and toppings',
       price: 3,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/cupcake.webp',
     ),
     ProductListItem(
       id: '2',
@@ -31,8 +29,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A soft and sweet donut, glazed or filled with your favorite flavors',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/donut.webp',
     ),
     ProductListItem(
       id: '3',
@@ -40,8 +37,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A long pastry filled with cream and topped with chocolate icing',
       price: 4,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/eclair.webp',
     ),
     ProductListItem(
       id: '4',
@@ -49,8 +45,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A creamy and refreshing frozen yogurt with various toppings',
       price: 5,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/froyo.webp',
     ),
     ProductListItem(
       id: '5',
@@ -58,8 +53,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A warm and spicy gingerbread cookie, perfect for the holidays',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/gingerbread.webp',
     ),
     ProductListItem(
       id: '6',
@@ -67,8 +61,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A sweet and crunchy honeycomb candy made from caramelized sugar',
       price: 3,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/honeycomb.webp',
     ),
     ProductListItem(
       id: '7',
@@ -76,8 +69,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A classic dessert made with ice cream sandwiched between two cookies or wafers',
       price: 4,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/sandwich.webp',
     ),
     ProductListItem(
       id: '8',
@@ -85,8 +77,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'Colorful and chewy jelly beans in a variety of fruity flavors',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/jellybean.webp',
     ),
     ProductListItem(
       id: '9',
@@ -94,8 +85,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A chocolate-covered wafer bar with a satisfying crunch in every bite',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/kitkat.webp',
     ),
     ProductListItem(
       id: '10',
@@ -103,8 +93,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A tangy and sweet pie made with key lime juice, egg yolks, and sweetened condensed milk',
       price: 5,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/keylimepie.webp',
     ),
     ProductListItem(
       id: '11',
@@ -112,8 +101,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A sweet and hard candy on a stick, available in many flavors and shapes',
       price: 1,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/lollipop.webp',
     ),
     ProductListItem(
       id: '12',
@@ -121,8 +109,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A soft and fluffy marshmallow, perfect for roasting or adding to your favorite treats',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/marshmallow.webp',
     ),
     ProductListItem(
       id: '13',
@@ -130,8 +117,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A chewy and nutty nougat candy made with sugar, honey, and nuts',
       price: 3,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/nougat.webp',
     ),
     ProductListItem(
       id: '14',
@@ -139,8 +125,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A classic sandwich cookie with a sweet cream filling between two chocolate wafers',
       price: 2,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/oreo.webp',
     ),
     ProductListItem(
       id: '15',
@@ -148,8 +133,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A classic dessert made with a buttery crust and various fruit fillings',
       price: 6,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/pie.webp',
     ),
     ProductListItem(
       id: '16',
@@ -157,8 +141,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A delightful tart filled with quince, a sweet and tangy fruit',
       price: 6,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/quincetart.webp',
     ),
     ProductListItem(
       id: '17',
@@ -166,8 +149,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A rich and moist cake with a distinctive red hue, layered with cream cheese frosting',
       price: 7,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/redvelvetcake.webp',
     ),
     ProductListItem(
       id: '18',
@@ -175,8 +157,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A refreshing and icy treat made from crushed ice and flavored syrup',
       price: 3,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/snowcone.webp',
     ),
     ProductListItem(
       id: '19',
@@ -184,8 +165,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'An elegant Italian dessert made with layers of coffee-soaked ladyfingers and a rich mascarpone cheese cream',
       price: 7,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/tiramisu.webp',
     ),
     ProductListItem(
       id: '20',
@@ -193,8 +173,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A delicious cake baked with a layer of fruit and caramel on the bottom, then inverted to serve',
       price: 6,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/upsidedowncake.webp',
     ),
     ProductListItem(
       id: '21',
@@ -202,8 +181,7 @@ class _ProductsPageState extends State<ProductsPage> {
       description:
           'A classic and creamy vanilla ice cream, enjoyed by itself or with your favorite toppings',
       price: 4,
-      imageUrl:
-          'https://cdn-prod.medicalnewstoday.com/content/images/articles/317/317257/cupcakes.jpg',
+      imageUrl: 'resources/images/vanillaicecream.webp',
     ),
   ];
 
